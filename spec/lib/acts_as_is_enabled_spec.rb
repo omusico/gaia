@@ -51,4 +51,14 @@ describe "all included class" do
     
     it_should_behave_like "acts_as_is_enabled"
   end
+
+  describe CityNameAlias do
+    before do
+      @instance_enabled = Factory :city_name_alias_enabled
+      @instance_disabled = Factory :city_name_alias_disabled
+    end
+    
+    it_should_behave_like "acts_as_is_enabled"
+  end
+
 end

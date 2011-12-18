@@ -1,3 +1,5 @@
+# Read about factories at http://github.com/thoughtbot/factory_girl
+
 FactoryGirl.define do
   factory :city do
     name "taipei"
@@ -10,5 +12,4 @@ FactoryGirl.define do
       is_enabled false
     end
   end
-
 end

@@ -7,5 +7,6 @@ class CreateCities < ActiveRecord::Migration
     end
     
     add_index :cities, :is_enabled
+    add_index :cities, :name, :unique => true
   end
 end
