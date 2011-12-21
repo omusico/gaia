@@ -1,0 +1,64 @@
+require 'spec_helper'
+
+shared_examples_for "acts_as_is_enabled" do
+  before do
+    @klass = @instance_enabled.class
+  end
+  
+  describe "scopes" do
+    it "enabled" do
+      @klass.enabled.include?(@instance_enabled).should be_true
+      @klass.enabled.include?(@instance_disabled).should be_false
+      @instance_disabled.enable
+      @klass.enabled.include?(@instance_disabled).should be_true
+    end
+
+    it "disabled" do
+      @klass.disabled.include?(@instance_disabled).should be_true
+      @klass.disabled.include?(@instance_enabled).should be_false
+      @instance_enabled.disable
+      @klass.disabled.include?(@instance_enabled).should be_true
+    end
+  end
+  
+  describe "instances" do
+    it "enable" do
+      @instance_disabled.enabled?.should be_false
+      @instance_disabled.disabled?.should be_true
+      @instance_disabled.enable.should be_true
+      @instance_disabled.enabled?.should be_true
+      @instance_disabled.disabled?.should be_false
+    end
+    
+    it "disable" do
+      @instance_enabled.enabled?.should be_true
+      @instance_enabled.disabled?.should be_false
+      @instance_enabled.disable.should be_true
+      @instance_enabled.enabled?.should be_false
+      @instance_enabled.disabled?.should be_true
+    end
+  end
+end
+
+
+describe "all included class" do
+  
+  describe City do
+    before do
+      @instance_enabled = Factory :city_enabled
+      @instance_disabled = Factory :city_disabled
+    end
+    
+    it_should_behave_like "acts_as_is_enabled"
+  end
+
+  describe CityNameAlias do
+    before do
+      @instance_enabled = Factory :city_name_alias_enabled
+      @instance_disabled = Factory :city_name_alias_disabled
+    end
+    
+    it_should_behave_like "acts_as_is_enabled"
+  end
+
+end

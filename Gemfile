@@ -31,12 +31,14 @@ gem 'jquery-rails'
 
 group :test,:development do
   # Pretty printed test output
+  gem 'rails3-generators'
   gem 'turn', :require => false
   gem "rspec"
   gem "rspec-rails"
   gem "shoulda-matchers"
   gem "watchr"
   gem "factory_girl_rails"
+  gem "faker"
 end
 
 gem 'capistrano'

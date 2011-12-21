@@ -11,6 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20111215151310) do
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["is_enabled"], :name => "index_cities_on_is_enabled"
+  add_index "cities", ["name"], :name => "index_cities_on_name", :unique => true
+
+  create_table "city_name_aliases", :force => true do |t|
+    t.string   "name"
+    t.integer  "city_id"
+    t.boolean  "is_enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "city_name_aliases", ["city_id", "name"], :name => "index_city_name_aliases_on_city_id_and_name", :unique => true
+  add_index "city_name_aliases", ["city_id"], :name => "index_city_name_aliases_on_city_id"
+  add_index "city_name_aliases", ["is_enabled"], :name => "index_city_name_aliases_on_is_enabled"
 
 end
