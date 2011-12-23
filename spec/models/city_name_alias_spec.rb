@@ -7,5 +7,6 @@ describe CityNameAlias do
   end
   
   it { should belong_to(:city) }
+  it { should validate_presence_of(:city_id) }
   
 end

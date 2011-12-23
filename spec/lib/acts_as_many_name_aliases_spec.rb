@@ -13,12 +13,14 @@ end
 
 describe "all included class" do
   
-  describe City do
-    before do
-      @instance = Factory :city
-    end
+  [City, Dist].each do |klass|
+    describe klass do
+      before do
+        @instance = Factory klass.to_s.underscore.to_sym
+      end
     
-    it_should_behave_like "acts_as_many_name_aliases"
+      it_should_behave_like "acts_as_many_name_aliases"
+    end
   end
 
 end

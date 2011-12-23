@@ -43,22 +43,14 @@ end
 
 describe "all included class" do
   
-  describe City do
-    before do
-      @instance_enabled = Factory :city_enabled
-      @instance_disabled = Factory :city_disabled
+  [City, CityNameAlias, Dist].each do |klass|
+    describe klass do
+      before do
+        @instance_enabled = Factory "#{klass.to_s.underscore}_enabled".to_sym
+        @instance_disabled = Factory "#{klass.to_s.underscore}_disabled".to_sym
+      end
+      it_should_behave_like "acts_as_is_enabled"
     end
-    
-    it_should_behave_like "acts_as_is_enabled"
-  end
-
-  describe CityNameAlias do
-    before do
-      @instance_enabled = Factory :city_name_alias_enabled
-      @instance_disabled = Factory :city_name_alias_disabled
-    end
-    
-    it_should_behave_like "acts_as_is_enabled"
   end
 
 end

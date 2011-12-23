@@ -1,0 +1,11 @@
+require 'spec_helper'
+
+describe Dist do
+  it "should validate_uniqueness_of name" do
+    Factory :dist
+    should validate_uniqueness_of(:name).scoped_to([:city_id])
+  end
+  it { should validate_presence_of(:name) }
+  it { should belong_to(:city) }
+  
+end

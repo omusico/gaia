@@ -5,6 +5,6 @@ class CityNameAlias < ActiveRecord::Base
   belongs_to :city
   
   validates_uniqueness_of :name, :scope => [:city_id]
-  
+  validates_presence_of :city_id
   
 end
