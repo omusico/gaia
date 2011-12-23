@@ -6,6 +6,8 @@ class City < ActiveRecord::Base
   acts_as_many_name_aliases CityNameAlias
   
   validates_uniqueness_of :name
-  
-  
+  validates_presence_of :name
+
+  has_many :dists
+      
 end

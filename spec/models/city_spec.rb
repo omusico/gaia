@@ -5,5 +5,6 @@ describe City do
     Factory :city
     should validate_uniqueness_of(:name) 
   end
-  
+  it { should validate_presence_of(:name) }
+  it { should have_many(:dists) }
 end

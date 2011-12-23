@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :city_name_alias do
     name "tp"
+    city_id 1
     factory :city_name_alias_enabled do
       name "tpp"
       is_enabled true
