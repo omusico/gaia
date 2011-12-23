@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111223111151) do
+ActiveRecord::Schema.define(:version => 20111223113422) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20111223111151) do
   add_index "city_name_aliases", ["city_id", "name"], :name => "index_city_name_aliases_on_city_id_and_name", :unique => true
   add_index "city_name_aliases", ["city_id"], :name => "index_city_name_aliases_on_city_id"
   add_index "city_name_aliases", ["is_enabled"], :name => "index_city_name_aliases_on_is_enabled"
+
+  create_table "dist_name_aliases", :force => true do |t|
+    t.string   "name"
+    t.integer  "dist_id"
+    t.boolean  "is_enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dist_name_aliases", ["dist_id", "name"], :name => "index_dist_name_aliases_on_dist_id_and_name", :unique => true
+  add_index "dist_name_aliases", ["dist_id"], :name => "index_dist_name_aliases_on_dist_id"
+  add_index "dist_name_aliases", ["is_enabled"], :name => "index_dist_name_aliases_on_is_enabled"
 
   create_table "dists", :force => true do |t|
     t.integer  "city_id"
