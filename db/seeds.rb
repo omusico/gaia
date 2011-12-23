@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+begin
+  Importer.run
+rescue => e
+  msg = "data seeding not complete (error: #{e.to_s}). please run 'bundle exec rake db:seed' to re-seed it!"
+  logger msg
+  puts msg
+end
