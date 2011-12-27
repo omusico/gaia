@@ -1,5 +1,9 @@
 Gaia::Application.routes.draw do
-  resources :cities
+  resources :cities do
+    resources :dists do
+      
+    end
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
