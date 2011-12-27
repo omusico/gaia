@@ -12,11 +12,4 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def includes_for_city
-    {:name_aliases=>{:only=>:name}, :dists=>{:only=>:name,:include=>{:name_aliases=>{:only=>:name}}}}
-  end
-  
-  def includes_for_dist
-    {:name_aliases => {:only => :name},:city => {:only => :name, :include => {:name_aliases=>{:only=>:name}}}}
-  end
 end

@@ -1,7 +1,11 @@
 class CitiesController < ApplicationController
   def index
-    includes = [:name_aliases,{:dists=>[:name_aliases]}]
-    @cities = City.includes(includes).enabled if !@cities
-    respond_as_api @cities, :include => includes_for_city
+    @cities = City.api_includes.enabled
+    respond_as_api @cities, :include => City::API_INCLUDES
+  end
+  
+  def show
+    @city = City.api_includes.enabled.find(params[:id])
+    respond_as_api @city, :include => City::API_INCLUDES
   end
 end
