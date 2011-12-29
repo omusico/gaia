@@ -1,4 +1,6 @@
 class City < ActiveRecord::Base
+  include ActsAsMatching
+  
   include ActsAsIsEnabled
   acts_as_is_enabled
   
