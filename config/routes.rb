@@ -1,7 +1,14 @@
 Gaia::Application.routes.draw do
   resources :cities do
     resources :dists do
-      
+    end
+  end
+  
+  
+  resources :search do
+    collection do
+      get 'index'
+      post 'index'
     end
   end
   
