@@ -26,13 +26,13 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :symlink_shared, :roles => [:app] do
-    config_files = [:database,:airbrake]
+    config_files = [:database]
     symlink_hash = {}
     config_files.each do |fname|
       symlink_hash["#{shared_path}/config/#{fname}.yml"] = "#{release_path}/config/#{fname}.yml"
     end
     symlink_hash.each do |source, target|
-      run "cp #{source} #{target}"
+      run "ln -s #{source} #{target}"
     end
   end
 end
