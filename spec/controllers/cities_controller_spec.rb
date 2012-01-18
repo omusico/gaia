@@ -27,6 +27,9 @@ describe CitiesController do
         @cities = init_api_data
       end
       it_should_behave_like "api_data_cities"
+      it "should not include city in dist" do
+        @cities[0][:dists][0].key?(:city).should be_false
+      end
     end
     describe "get show" do
       describe "enabled" do
@@ -35,6 +38,9 @@ describe CitiesController do
           @city_hash = init_api_data
         end
         it_should_behave_like "api_data_city"
+        it "should not include city in dist" do
+          @city_hash[:dists][0].key?(:city).should be_false
+        end
       end
       it "disabled" do
         expect {

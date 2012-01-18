@@ -22,12 +22,12 @@ class Dist < ActiveRecord::Base
   def to_api_vars opts = {}
     withouts = (opts[:without] || []).map{ |s|s.to_sym }
     vars = { 
-      :id => id, :name => :name, 
+      :id => id, :name => name, 
       :pure_name => pure_name, 
       :type_name => type_name
     }
     vars[:name_aliases] = name_aliases.map { |a| a.name } unless withouts.include?(:name_aliases)
-    if withouts.include?(:city)
+    unless withouts.include?(:city)
       vars[:city] = city.to_api_vars(:without=>[:dists]) 
     else
       vars[:city_id] = city_id

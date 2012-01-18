@@ -7,7 +7,7 @@ shared_examples_for "api_data_dist" do
     
     it { @dist_hash.should be_a_kind_of(Hash) }
     it { @dist_hash[:id].to_i.should == @dist.id }
-    it { @dist_hash[:name].should be_a_kind_of(String) }
+    it { @dist_hash[:name].should == @dist.name }
     it { @dist_hash[:pure_name].should == @dist.pure_name }
     it { @dist_hash[:type_name].should == @dist.type_name }
     

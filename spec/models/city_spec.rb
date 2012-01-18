@@ -7,4 +7,6 @@ describe City do
   end
   it { should validate_presence_of(:name) }
   it { should have_many(:dists) }
+  
+  pending "#to_api_vars"
 end

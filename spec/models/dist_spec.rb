@@ -8,4 +8,5 @@ describe Dist do
   it { should validate_presence_of(:name) }
   it { should belong_to(:city) }
   
+  pending "#to_api_vars"
 end
