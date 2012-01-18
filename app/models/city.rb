@@ -1,4 +1,8 @@
+# encoding: utf-8
 class City < ActiveRecord::Base
+  TYPES = ["縣", "市"]
+  include ActsAsHasType
+  
   include ActsAsMatching
   
   include ActsAsIsEnabled

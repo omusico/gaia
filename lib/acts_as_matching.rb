@@ -17,7 +17,14 @@ module ActsAsMatching
     private
     
     def match_methods
-      [:name, :name_aliases]
+      [:name, :pure_name, :name_aliases]
+    end
+
+    def match_with_pure_name text
+      if respond_to?(:pure_name)
+        return text.index(pure_name.downcase)
+      end
+      false
     end
     
     def match_with_name text

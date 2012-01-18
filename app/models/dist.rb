@@ -1,4 +1,8 @@
+# encoding: utf-8
 class Dist < ActiveRecord::Base
+  TYPES = [ "區", "鄉", "鎮", "市" ]
+  include ActsAsHasType
+  
   include ActsAsMatching
   
   include ActsAsIsEnabled
