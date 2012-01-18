@@ -5,12 +5,12 @@ class DistsController < ApplicationController
 
   def index
     @dists = @city.dists.api_includes.enabled
-    respond_as_api @dists, :include => Dist::API_INCLUDES
+    respond_as_api @dists.map{ |dist| dist.to_api_vars }
   end
   
   def show
     @dist = @city.dists.api_includes.enabled.find(params[:id])
-    respond_as_api @dist, :include => Dist::API_INCLUDES
+    respond_as_api @dist.to_api_vars
   end
   
 end

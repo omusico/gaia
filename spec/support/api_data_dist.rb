@@ -8,6 +8,8 @@ shared_examples_for "api_data_dist" do
     it { @dist_hash.should be_a_kind_of(Hash) }
     it { @dist_hash[:id].to_i.should == @dist.id }
     it { @dist_hash[:name].should be_a_kind_of(String) }
+    it { @dist_hash[:pure_name].should == @dist.pure_name }
+    it { @dist_hash[:type_name].should == @dist.type_name }
     
     it "check city id" do 
       if @city_id && @dist_hash[:city_id]
@@ -32,7 +34,7 @@ shared_examples_for "api_data_dist" do
     
     it { @dist_hash[:name_aliases].should be_a_kind_of(Array) }
     it "name aliases enabled only" do
-      alias_ids = @dist_hash[:name_aliases].map{ |hash| hash[:name] }
+      alias_ids = @dist_hash[:name_aliases].map{ |name| name }
       alias_ids.include?(@dist_name_alias_enabled.name).should be_true
       alias_ids.include?(@dist_name_alias_disabled.name).should be_false
     end
