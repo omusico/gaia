@@ -21,6 +21,22 @@ shared_examples_for "api_data_city" do
       end
     end
     
+    it "city pure_name" do
+      if @city
+        @city_hash[:pure_name].should == @city.pure_name
+      else
+        @city_hash.key?(:pure_name).should be_true
+      end
+    end
+
+    it "city type_name" do
+      if @city
+        @city_hash[:type_name].should == @city.type_name
+      else
+        @city_hash.key?(:type_name).should be_true
+      end
+    end
+
     it { @city_hash[:name_aliases].should be_a_kind_of(Array) }
     
     
@@ -39,7 +55,7 @@ shared_examples_for "api_data_city" do
     end
     
     it "name aliases enabled only" do
-      alias_ids = @city_hash[:name_aliases].map{ |hash| hash[:name] }
+      alias_ids = @city_hash[:name_aliases].map{ |name| name }
       alias_ids.include?(@city_name_alias_enabled.name).should be_true
       alias_ids.include?(@city_name_alias_disabled.name).should be_false
     end

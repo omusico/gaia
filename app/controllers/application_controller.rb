@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     respond_to do |f|
       f.html
       f.js
-      f.json {render :json => vars.to_json(:include => options[:include])}
-      f.xml {render :xml => vars.to_xml(:include => options[:include])}
+      f.json { render :json => vars.to_json }
+      f.xml { render :xml => vars.to_xml }
     end
   end
   
