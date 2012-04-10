@@ -17,7 +17,7 @@ module ActsAsMatching
     private
     
     def match_methods
-      [:name, :pure_name, :name_aliases]
+      [:name, :name_aliases]
     end
 
     def match_with_pure_name text

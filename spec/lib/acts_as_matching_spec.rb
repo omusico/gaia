@@ -30,9 +30,9 @@ describe "matching" do
       @city.match?("桃園中壢苗栗").should be_false
     end
     
-    it "match by pure_name" do
-      @city.match?("新北").should be_true
-      @city2.match?("台南").should be_true
+    it "match by pure_name should be false" do
+      @city.match?("新北").should be_false
+      @city2.match?("台南").should be_false
     end
     
   end
@@ -50,9 +50,9 @@ describe "matching" do
       @dist2.match?("雙和國小").should be_false
     end
 
-    it "match by pure_name" do
-      @dist.match?("中和").should be_true
-      @dist2.match?("中西").should be_true
+    it "match by pure_name should be false" do
+      @dist.match?("中和").should be_false
+      @dist2.match?("中西").should be_false
     end
     
   end
