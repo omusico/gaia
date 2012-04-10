@@ -45,8 +45,7 @@ task :tail_log, :roles => :app do
 end
 
 # symlink_shared
-before "deploy:assets:precompile", "deploy:symlink_shared"
-before "deploy:migrate", "deploy:symlink_shared"
+before "bundle:install", "deploy:symlink_shared"
 after "deploy", "deploy:symlink_shared"
 after "deploy:migrations", "deploy:symlink_shared"
 # cleanup
