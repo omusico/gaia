@@ -7,6 +7,14 @@ class SearchController < ApplicationController
   
   private
   
+  def check_duplicate_matches(matches)
+    if matches[:dists].size > 1 && matches[:dists].map(&:name).uniq.size < matches[:dists].size
+      cities_ids = matches[:cities].map(&:id)
+      matches[:dists].reject!{ |dist| !cities_ids.include?(dist.city_id) } if cities_ids.size > 0
+    end
+    matches
+  end
+  
   def get_matches text
     matches = {:cities => [], :dists => []}
     City.api_includes.enabled.each do |city|
@@ -15,7 +23,7 @@ class SearchController < ApplicationController
         matches[:dists] << dist if dist.match?(text)
       end
     end
-    matches
+    check_duplicate_matches matches
   end
 
   def render_values values
