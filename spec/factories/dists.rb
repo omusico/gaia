@@ -2,7 +2,9 @@
 
 FactoryGirl.define do
   factory :dist do
-    city_id 1
+    city do
+      FactoryGirl.create :city_enabled
+    end
     name "tttp"
     factory :dist_enabled do
       name "tptp"

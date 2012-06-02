@@ -2,13 +2,13 @@
 
 FactoryGirl.define do
   factory :city do
-    name "taipei"
+    sequence(:name){ |n| "taipei#{n}" }
     factory :city_enabled do
-      name "tainan"
+      sequence(:name){ |n| "tainan#{n}" }
       is_enabled true
     end
     factory :city_disabled do
-      name "tn"
+      sequence(:name){ |n| "tn#{n}" }
       is_enabled false
     end
   end

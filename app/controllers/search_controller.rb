@@ -1,8 +1,13 @@
 class SearchController < ApplicationController
   
   def index
-    matches = get_matches(params[:text])
-    respond_as_api(render_values(matches))
+    if params[:text]
+      matches = get_matches(params[:text]) 
+      respond_as_api(render_values(matches))
+    elsif params[:zipcode]
+      @dists = Dist.where :zipcode => params[:zipcode]
+      respond_as_api(@dists.map(&:to_api_vars))
+    end
   end
   
   private
