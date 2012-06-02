@@ -23,6 +23,7 @@ class Dist < ActiveRecord::Base
     withouts = (opts[:without] || []).map{ |s|s.to_sym }
     vars = { 
       :id => id, :name => name, 
+      :zipcode => zipcode,
       :pure_name => pure_name, 
       :type_name => type_name
     }

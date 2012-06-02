@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410161543) do
+ActiveRecord::Schema.define(:version => 20120602111928) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120410161543) do
   create_table "dists", :force => true do |t|
     t.integer  "city_id"
     t.string   "name"
+    t.integer  "zipcode"
     t.boolean  "is_enabled"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -58,5 +59,6 @@ ActiveRecord::Schema.define(:version => 20120410161543) do
   add_index "dists", ["city_id"], :name => "index_dists_on_city_id"
   add_index "dists", ["is_enabled"], :name => "index_dists_on_is_enabled"
   add_index "dists", ["name", "city_id"], :name => "index_dists_on_name_and_city_id", :unique => true
+  add_index "dists", ["zipcode"], :name => "index_dists_on_zipcode"
 
 end
