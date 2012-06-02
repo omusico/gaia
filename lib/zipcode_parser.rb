@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ZipcodeParser
   
   def self.parse_zipcode
