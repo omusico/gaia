@@ -12,5 +12,5 @@ class DistsController < ApplicationController
     @dist = @city.dists.api_includes.enabled.find(params[:id])
     respond_as_api @dist.to_api_vars
   end
-  
+
 end

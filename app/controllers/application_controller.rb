@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protected
   
   def respond_as_api vars, options = {}
+    response.headers["Access-Control-Allow-Origin"] = "*"
     respond_to do |f|
       f.html
       f.js
