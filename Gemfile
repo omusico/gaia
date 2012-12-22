@@ -39,9 +39,12 @@ group :test,:development do
   gem "watchr"
   gem "factory_girl_rails"
   gem "faker"
+  gem "capistrano"
+  gem "capistrano-ext"
+  gem "capistrano_colors"
+  gem 'rvm-capistrano'
 end
 
-gem 'capistrano'
 gem 'whenever', :require => false
 gem "settingslogic"
 # gem "haml"
