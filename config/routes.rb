@@ -1,5 +1,6 @@
 Gaia::Application.routes.draw do
   match "/select" => 'cities#select', :via => [:get]
+  match "/demo" => 'cities#demo', :via => [:get]
   resources :cities do
     resources :dists do
     end

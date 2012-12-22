@@ -18,14 +18,14 @@ function loadjQuery(callback){
     script.src = url;
     document.getElementsByTagName("head")[0].appendChild(script);
 }
-function loadDistsSelector() {
+function loadDistsSelector<%=@random%>() {
   var cities_selector = '<%= @html_city[:name] %>';
   cities_selector = (cities_selector == '' ? '#city_id' : 'select[name="'+cities_selector+'"]');
   var dists_selector = '<%= @html_dist[:name] %>';
   dists_selector = (dists_selector == '' ? '#dist_id' : 'select[name="'+dists_selector+'"]');
   $(cities_selector).on('change', function() {
     $.get('http://<%=Setting.host%>/cities/'+$(this).val()+'/dists.json', null, function(dists) {
-      var dists_select = $(dists_selector);
+      var dists_select = $(dists_selector, $(cities_selector).parent());
       dists_select.html('<option>請選擇</option>');
       for(i in dists) {
         dists_select.append($(document.createElement('option')).val(dists[i].id).html(dists[i].name));
@@ -37,8 +37,8 @@ document.write('<%= escape_javascript(render_select(@cities, @selected_city_id, 
 document.write('<%= escape_javascript(render_select(@dists, @selected_dist_id, @html_dist)) %>');
 if(typeof(jQuery) == 'undefined') {
   loadjQuery(function() {
-    loadDistsSelector();
+    loadDistsSelector<%=@random%>();
   });
 } else {
-  loadDistsSelector();
+  loadDistsSelector<%=@random%>();
 }

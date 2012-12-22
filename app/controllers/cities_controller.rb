@@ -11,13 +11,22 @@ class CitiesController < ApplicationController
 
   def select
     init_html_vars
-    @selected_city_id = params[:selected_city_id]
     @selected_dist_id = params[:selected_dist_id]
+    @selected_city_id = get_selected_city_id(@selected_dist_id)
     @cities = City.scoped.enabled
     @dists = @selected_city_id ? City.find(@selected_city_id).dists : []
+    @random = Time.now.usec.to_s[-6..-1]
   end
 
   private 
+
+  def get_selected_city_id(dist_id)
+    if(dist_id)
+      Dist.find(dist_id).city_id
+    else
+      params[:selected_city_id]
+    end
+  end
 
   def init_html_vars
     @html_city = params[:html_city] || params[:html] || {}
