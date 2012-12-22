@@ -18,7 +18,7 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
+# gem 'jquery-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -43,5 +43,6 @@ end
 
 gem 'capistrano'
 gem 'whenever', :require => false
-gem "haml"
+gem "settingslogic"
+# gem "haml"
 gem "airbrake"

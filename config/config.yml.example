@@ -1,0 +1,11 @@
+defaults: &defaults
+  app_name: "Gaia for Taiwan"
+  host: "gaia.5fpro.tw"
+
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
