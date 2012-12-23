@@ -1,9 +1,13 @@
 Gaia::Application.routes.draw do
   match "/select" => 'cities#select', :via => [:get]
   match "/demo" => 'cities#demo', :via => [:get]
-  resources :cities do
-    resources :dists do
+  resources :cities, :only => [:show, :index] do
+    get :name, :on => :member
+    resources :dists, :only => [:show, :index] do
     end
+  end
+  resources :dists, :only => [] do
+    get :name, :on => :member
   end
   
   resources :search do

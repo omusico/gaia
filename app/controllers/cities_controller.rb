@@ -18,6 +18,10 @@ class CitiesController < ApplicationController
     @random = Time.now.usec.to_s[-6..-1]
   end
 
+  def name
+    @city = City.find params[:id]
+  end
+
   private 
 
   def get_selected_city_id(dist_id)

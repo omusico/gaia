@@ -13,4 +13,9 @@ class DistsController < ApplicationController
     respond_as_api @dist.to_api_vars
   end
 
+  def name
+    @dist = Dist.find params[:id]
+    @name = "#{params[:only] ? "" : @dist.city.name}#{@dist.name}"
+  end
+
 end
