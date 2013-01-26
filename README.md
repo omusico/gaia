@@ -1,7 +1,7 @@
 API Reference
 =============
 
-see <a href= "http://9a7840.swagger.5fpro.com" target="_blank">http://9a7840.swagger.5fpro.com</a>
+see <a href= "http://gaia-doc.5fpro.tw" target="_blank">http://gaia-doc.5fpro.tw</a>
 
 Demo (JS)
 ============
