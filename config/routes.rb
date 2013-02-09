@@ -8,6 +8,7 @@ Gaia::Application.routes.draw do
   end
   resources :dists, :only => [] do
     get :name, :on => :member
+    get :zipcode, :on => :member
   end
   
   resources :search do

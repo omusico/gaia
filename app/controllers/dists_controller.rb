@@ -16,6 +16,12 @@ class DistsController < ApplicationController
   def name
     @dist = Dist.find params[:id]
     @name = "#{params[:only] ? "" : @dist.city.name}#{@dist.name}"
+    @name = "#{@dist.zipcode} #{@name}" if params[:zipcode]
+  end
+
+  def zipcode
+    @dist = Dist.find params[:id]
+    @zipcode = "#{@dist.zipcode}"
   end
 
 end
