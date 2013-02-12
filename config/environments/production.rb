@@ -33,8 +33,10 @@ Gaia::Application.configure do
   # See everything in the log (default is :info)
   # config.log_level = :debug
 
+  # config.log_tags = [ :subdomain, :uuid ]
+
   # Use a different logger for distributed setups
-  # config.logger = SyslogLogger.new
+  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
@@ -57,4 +59,6 @@ Gaia::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
