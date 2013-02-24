@@ -13,11 +13,11 @@ describe DistsController do
   describe "api interface" do
     
     before do
-      @city = Factory :city
-      @dist = @dist_enabled = Factory(:dist_enabled, :city_id => @city.id)
-      @dist_name_alias_enabled = Factory :dist_name_alias_enabled, :dist_id => @dist_enabled.id
-      @dist_name_alias_disabled = Factory :dist_name_alias_disabled, :dist_id => @dist_enabled.id
-      @dist_disabled = Factory :dist_disabled, :city_id => @city.id
+      @city = FactoryGirl.create :city
+      @dist = @dist_enabled = FactoryGirl.create :dist_enabled, :city_id => @city.id
+      @dist_name_alias_enabled = FactoryGirl.create :dist_name_alias_enabled, :dist_id => @dist_enabled.id
+      @dist_name_alias_disabled = FactoryGirl.create :dist_name_alias_disabled, :dist_id => @dist_enabled.id
+      @dist_disabled = FactoryGirl.create :dist_disabled, :city_id => @city.id
     end
     
     describe "get show" do

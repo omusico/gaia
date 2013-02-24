@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Dist do
   it "should validate_uniqueness_of name" do
-    Factory :dist
+    FactoryGirl.create :dist
     should validate_uniqueness_of(:name).scoped_to([:city_id])
   end
   it { should validate_presence_of(:name) }

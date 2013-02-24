@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "city" do
   before do
-    @city = Factory :city, :name => "花蓮縣"
+    @city = FactoryGirl.create :city, :name => "花蓮縣"
   end
   
   it "#pure_name" do
@@ -17,7 +17,7 @@ end
 
 describe "dist" do
   before do
-    @dist = Factory :dist, :name => "玉里鎮"
+    @dist = FactoryGirl.create :dist, :name => "玉里鎮"
   end
   
   it "#pure_name" do

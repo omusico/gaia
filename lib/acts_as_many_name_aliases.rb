@@ -8,10 +8,8 @@ module ActsAsManyNameAliases
     end
   end
   
-  module InstanceMethods
-    def alias_name_list
-      name_aliases.map(&:name)
-    end
+  def alias_name_list
+    name_aliases.map(&:name)
   end
   
 end

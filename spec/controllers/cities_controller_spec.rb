@@ -12,14 +12,14 @@ describe CitiesController do
   
   describe "api interface" do
     before do
-      @city = @city_enabled = Factory(:city_enabled)
-      @city_disabled = Factory :city_disabled
-      @city_name_alias_enabled = Factory :city_name_alias_enabled, :city_id => @city_enabled.id
-      @city_name_alias_disabled = Factory :city_name_alias_disabled, :city_id => @city_enabled.id
-      @dist = @dist_enabled = Factory(:dist_enabled, :city_id => @city.id)
-      @dist_name_alias_enabled = Factory :dist_name_alias_enabled, :dist_id => @dist_enabled.id
-      @dist_name_alias_disabled = Factory :dist_name_alias_disabled, :dist_id => @dist_enabled.id
-      @dist_disabled = Factory :dist_disabled, :city_id => @city.id
+      @city = @city_enabled = FactoryGirl.create :city_enabled
+      @city_disabled = FactoryGirl.create :city_disabled
+      @city_name_alias_enabled = FactoryGirl.create :city_name_alias_enabled, :city_id => @city_enabled.id
+      @city_name_alias_disabled = FactoryGirl.create :city_name_alias_disabled, :city_id => @city_enabled.id
+      @dist = @dist_enabled = FactoryGirl.create :dist_enabled, :city_id => @city.id
+      @dist_name_alias_enabled = FactoryGirl.create :dist_name_alias_enabled, :dist_id => @dist_enabled.id
+      @dist_name_alias_disabled = FactoryGirl.create :dist_name_alias_disabled, :dist_id => @dist_enabled.id
+      @dist_disabled = FactoryGirl.create :dist_disabled, :city_id => @city.id
     end
     describe "get index" do
       before do

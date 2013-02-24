@@ -7,16 +7,12 @@ module ControllerBelongsToCity
     end
   end
   
-  module InstanceMethods
-    
-    protected
-    
-    def get_city
-      if params[:city_id]
-        @city = City.find(params[:city_id])
-      end
+  protected
+  
+  def get_city
+    if params[:city_id]
+      @city = City.find(params[:city_id])
     end
-    
   end
   
 end

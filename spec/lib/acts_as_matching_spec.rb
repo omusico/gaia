@@ -3,14 +3,14 @@ require 'spec_helper'
 
 describe "matching" do
   before do
-    @city = Factory :city_enabled, :name => "新北市"
-    @city2 = Factory :city_enabled, :name => "台南市"
-    @city_name_alias = Factory :city_name_alias_enabled, :name => "北縣", :city_id => @city.id
-    @city_name_alias2 = Factory :city_name_alias_enabled, :name => "南縣", :city_id => @city2.id
-    @dist = Factory :dist_enabled, :city_id => @city.id, :name => "中和區"
-    @dist2 = Factory :dist_enabled, :city_id => @city2.id, :name => "中區"
-    @dist_name_alias = Factory :dist_name_alias_enabled, :name => "雙和", :dist_id => @dist.id
-    @dist_name_alias2 = Factory :dist_name_alias_enabled, :name => "中西區", :dist_id => @dist2.id
+    @city = FactoryGirl.create :city_enabled, :name => "新北市"
+    @city2 = FactoryGirl.create :city_enabled, :name => "台南市"
+    @city_name_alias = FactoryGirl.create :city_name_alias_enabled, :name => "北縣", :city_id => @city.id
+    @city_name_alias2 = FactoryGirl.create :city_name_alias_enabled, :name => "南縣", :city_id => @city2.id
+    @dist = FactoryGirl.create :dist_enabled, :city_id => @city.id, :name => "中和區"
+    @dist2 = FactoryGirl.create :dist_enabled, :city_id => @city2.id, :name => "中區"
+    @dist_name_alias = FactoryGirl.create :dist_name_alias_enabled, :name => "雙和", :dist_id => @dist.id
+    @dist_name_alias2 = FactoryGirl.create :dist_name_alias_enabled, :name => "中西區", :dist_id => @dist2.id
   end
   
   describe "cities" do

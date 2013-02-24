@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DistNameAlias do
   it "should validate uniqueness of name with scope dist " do
-    Factory :dist_name_alias
+    FactoryGirl.create :dist_name_alias
     should validate_uniqueness_of(:name).scoped_to(:dist_id)
   end
   

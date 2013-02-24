@@ -16,7 +16,7 @@ describe "all included class" do
   [City, Dist].each do |klass|
     describe klass do
       before do
-        @instance = Factory klass.to_s.underscore.to_sym
+        @instance = FactoryGirl.create klass.to_s.underscore.to_sym
       end
     
       it_should_behave_like "acts_as_many_name_aliases"
