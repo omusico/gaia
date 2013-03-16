@@ -25,7 +25,7 @@ class CitiesController < ApplicationController
   private 
 
   def get_selected_city_id(dist_id)
-    if(dist_id)
+    if(dist_id.present?)
       Dist.find(dist_id).city_id
     else
       params[:selected_city_id]
