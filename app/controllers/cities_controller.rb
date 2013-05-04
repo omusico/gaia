@@ -14,7 +14,7 @@ class CitiesController < ApplicationController
     @selected_dist_id = params[:selected_dist_id]
     @selected_city_id = get_selected_city_id(@selected_dist_id)
     @cities = City.scoped.enabled
-    @dists = @selected_city_id ? City.find(@selected_city_id).dists : []
+    @dists = @selected_city_id.present? ? City.find(@selected_city_id).dists : []
     @random = Time.now.usec.to_s[-6..-1]
   end
 
