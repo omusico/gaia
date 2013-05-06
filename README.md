@@ -14,3 +14,10 @@ Features
 1. JSON/XML data with id, name, zipcode, alias names
 2. Search cities and dists by text or zipcode
 3. Javascript plugin for rendering cities/dists selects & city/dist name
+
+TODOs
+=====
+
+1. Complete alias names in each city.
+2. Provide english name in each city and dist
+3. Including areas data (北、中、南、東、外島) with chinese and english.
