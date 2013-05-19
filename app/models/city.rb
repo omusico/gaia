@@ -18,6 +18,7 @@ class City < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :dists, :conditions => {:is_enabled=>true}
+  belongs_to :area
       
   def to_api_vars opts = {}
     withouts = (opts[:without] || []).map{ |s|s.to_sym }

@@ -11,15 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120602111928) do
+ActiveRecord::Schema.define(:version => 20130519161815) do
+
+  create_table "areas", :force => true do |t|
+    t.string   "name"
+    t.string   "name_en"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "areas", ["name"], :name => "index_areas_on_name"
 
   create_table "cities", :force => true do |t|
     t.string   "name"
+    t.integer  "area_id"
     t.boolean  "is_enabled"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
+  add_index "cities", ["area_id"], :name => "index_cities_on_area_id"
   add_index "cities", ["is_enabled"], :name => "index_cities_on_is_enabled"
   add_index "cities", ["name"], :name => "index_cities_on_name", :unique => true
 
@@ -27,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20120602111928) do
     t.string   "name"
     t.integer  "city_id"
     t.boolean  "is_enabled"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "city_name_aliases", ["city_id", "name"], :name => "index_city_name_aliases_on_city_id_and_name", :unique => true
@@ -39,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20120602111928) do
     t.string   "name"
     t.integer  "dist_id"
     t.boolean  "is_enabled"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "dist_name_aliases", ["dist_id", "name"], :name => "index_dist_name_aliases_on_dist_id_and_name", :unique => true
@@ -49,13 +60,15 @@ ActiveRecord::Schema.define(:version => 20120602111928) do
 
   create_table "dists", :force => true do |t|
     t.integer  "city_id"
+    t.integer  "area_id"
     t.string   "name"
     t.integer  "zipcode"
     t.boolean  "is_enabled"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
+  add_index "dists", ["area_id"], :name => "index_dists_on_area_id"
   add_index "dists", ["city_id"], :name => "index_dists_on_city_id"
   add_index "dists", ["is_enabled"], :name => "index_dists_on_is_enabled"
   add_index "dists", ["name", "city_id"], :name => "index_dists_on_name_and_city_id", :unique => true

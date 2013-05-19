@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :city do
     sequence(:name){ |n| "taipei#{n}" }
+    area{ FactoryGirl.create :area }
     factory :city_enabled do
       sequence(:name){ |n| "tainan#{n}" }
       is_enabled true

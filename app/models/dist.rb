@@ -18,6 +18,9 @@ class Dist < ActiveRecord::Base
   validates_presence_of :name
 
   belongs_to :city
+  belongs_to :area
+
+  before_save{ self.area_id = city.area_id }
 
   def to_api_vars opts = {}
     withouts = (opts[:without] || []).map{ |s|s.to_sym }
