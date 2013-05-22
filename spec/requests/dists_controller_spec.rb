@@ -35,6 +35,8 @@ describe DistsController do
       dists.each do |dist_hash|
         it_should_be_name_alias(dist_hash[:name_aliases])
       end
+      dists.size.should == size + 1
+      dists.first.key?(:city).should be_false
     end
 
     it "/cities/{city_id}/dists/{id}.json" do
