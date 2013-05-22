@@ -45,7 +45,7 @@ module ApiMatcher
     city_hash.key?(:name).should be_true
     city_hash.key?(:pure_name).should be_true
     city_hash.key?(:type_name).should be_true
-    it_should_be_area(city_hash[:area]) if city_hash.key?(:area)
+    it_should_be_area(city_hash[:area], {}) if city_hash.key?(:area)
     if city
       city_hash[:id].to_i.should == city.id
       city_hash[:name].should == city.name 
