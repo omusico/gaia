@@ -2,14 +2,10 @@
 
 FactoryGirl.define do
   factory :dist_name_alias do
-    name "tp"
-    dist_id 1
-    factory :dist_name_alias_enabled do
-      name "tpp"
-      is_enabled true
-    end
+    sequence(:name){ |n| "dist name alias #{n}" } 
+    dist{ FactoryGirl.create :dist }
+    is_enabled true
     factory :dist_name_alias_disabled do
-      name "ttpp"
       is_enabled false
     end
   end

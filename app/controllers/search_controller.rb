@@ -22,7 +22,7 @@ class SearchController < ApplicationController
   
   def get_matches text
     matches = {:cities => [], :dists => []}
-    City.api_includes.enabled.each do |city|
+    City.include_dists.include_names.enabled.each do |city|
       matches[:cities] << city if city.match?(text)
       city.dists.each do |dist|
         matches[:dists] << dist if dist.match?(text)

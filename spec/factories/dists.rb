@@ -2,17 +2,15 @@
 
 FactoryGirl.define do
   factory :dist do
-    city do
-      FactoryGirl.create :city_enabled
-    end
-    name "tttp"
-    factory :dist_enabled do
-      name "tptp"
-      is_enabled true
-    end
+    city{ FactoryGirl.create :city }
+    sequence(:name){ |n| "dist name #{n}" }
+    is_enabled true
     factory :dist_disabled do
-      name "pttt"
       is_enabled false
+    end
+    after(:create) do |dist, evaluator|
+      FactoryGirl.create :dist_name_alias, :dist => dist
+      FactoryGirl.create :dist_name_alias_disabled, :dist => dist
     end
   end
 end

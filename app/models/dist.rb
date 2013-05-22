@@ -11,8 +11,9 @@ class Dist < ActiveRecord::Base
   include ActsAsManyNameAliases
   acts_as_many_name_aliases DistNameAlias
   
-  scope :api_includes, includes([{:city=>:name_aliases}, :name_aliases])
-  API_INCLUDES = {:name_aliases => {:only => :name},:city => {:only => :name, :include => {:name_aliases=>{:only=>:name}}}}
+  scope :include_names, includes(:name_aliases)
+  scope :include_city, includes(:city => [:name_aliases, :area])
+  scope :include_area, includes(:area)
   
   validates_uniqueness_of :name, :scope => [:city_id]
   validates_presence_of :name
@@ -22,21 +23,19 @@ class Dist < ActiveRecord::Base
 
   before_save{ self.area_id = city.area_id }
 
-  def to_api_vars opts = {}
-    withouts = (opts[:without] || []).map{ |s|s.to_sym }
-    vars = { 
-      :id => id, :name => name, 
+  def to_api_vars(with: [])
+    vars = { :id => id, 
+      :name => name, 
       :zipcode => zipcode,
       :pure_name => pure_name, 
-      :type_name => type_name
+      :type_name => type_name,
+      :city_id => city_id,
+      :area_id => area_id
     }
-    vars[:name_aliases] = name_aliases.map { |a| a.name } unless withouts.include?(:name_aliases)
-    unless withouts.include?(:city)
-      vars[:city] = city.to_api_vars(:without=>[:dists]) 
-    else
-      vars[:city_id] = city_id
-    end
+    vars[:name_aliases] = alias_name_list if with.include?(:name_aliases)
+    vars[:city] = city.to_api_vars(:with => [:name_aliases, :area]) if with.include?(:city)
+    vars[:area] = area.to_api_vars if with.include?(:area)
     vars
   end
-  
+
 end

@@ -1,12 +1,13 @@
 class CitiesController < ApplicationController
+  
   def index
-    @cities = City.api_includes.enabled
-    respond_as_api @cities.map{ |city| city.to_api_vars }
+    @cities = City.include_names.include_area.enabled
+    respond_as_api @cities.map{ |c| c.to_api_vars(:with => [:area, :name_aliases]) }
   end
   
   def show
-    @city = City.api_includes.enabled.find(params[:id])
-    respond_as_api @city.to_api_vars
+    @city = City.include_names.include_dists.enabled.find(params[:id])
+    respond_as_api @city.to_api_vars(:with => [:dists, :area, :name_aliases])
   end
 
   def select
