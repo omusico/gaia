@@ -47,7 +47,5 @@ group :test,:development do
   gem "faker"
 end
 
-gem 'whenever', :require => false
+# gem 'whenever', :require => false
 gem "settingslogic"
-# gem "haml"
-gem "airbrake"
