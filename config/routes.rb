@@ -18,6 +18,8 @@ Gaia::Application.routes.draw do
       post 'index'
     end
   end
+
+  root :to => "cities#demo"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
