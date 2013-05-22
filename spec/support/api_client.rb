@@ -11,4 +11,17 @@ module ApiClient
     end
     data
   end
+
+  def request_api(method, path, querys = {}, request_env = {})
+    send(method, path, querys, request_env)
+    @status = response.status
+    data = ActiveSupport::JSON.decode(response.body)
+    if data.is_a?(Hash)
+      HashWithIndifferentAccess.new(data)
+    elsif data.is_a?(Array)
+      data.map{ |hash| HashWithIndifferentAccess.new(hash) }
+    else
+      data
+    end
+  end
 end

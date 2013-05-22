@@ -4,13 +4,13 @@ class DistsController < ApplicationController
   controller_belongs_to_city
 
   def index
-    @dists = @city.dists.api_includes.enabled
-    respond_as_api @dists.map{ |dist| dist.to_api_vars }
+    @dists = @city.dists.include_names.enabled
+    respond_as_api @dists.map{ |dist| dist.to_api_vars(:with => [:name_aliases]) }
   end
   
   def show
-    @dist = @city.dists.api_includes.enabled.find(params[:id])
-    respond_as_api @dist.to_api_vars
+    @dist = @city.dists.include_names.include_city.enabled.find(params[:id])
+    respond_as_api @dist.to_api_vars(:with => [:name_aliases, :city])
   end
 
   def name

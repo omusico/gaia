@@ -46,7 +46,7 @@ describe "all included class" do
   [City, CityNameAlias, Dist].each do |klass|
     describe klass do
       before do
-        @instance_enabled = FactoryGirl.create "#{klass.to_s.underscore}_enabled".to_sym
+        @instance_enabled = FactoryGirl.create "#{klass.to_s.underscore}".to_sym
         @instance_disabled = FactoryGirl.create "#{klass.to_s.underscore}_disabled".to_sym
       end
       it_should_behave_like "acts_as_is_enabled"

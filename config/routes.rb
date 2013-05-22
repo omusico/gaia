@@ -1,6 +1,7 @@
 Gaia::Application.routes.draw do
   match "/select" => 'cities#select', :via => [:get]
   match "/demo" => 'cities#demo', :via => [:get]
+  resources :areas, :only => [:show, :index]
   resources :cities, :only => [:show, :index] do
     get :name, :on => :member
     resources :dists, :only => [:show, :index] do
@@ -17,6 +18,8 @@ Gaia::Application.routes.draw do
       post 'index'
     end
   end
+
+  root :to => "cities#demo"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
