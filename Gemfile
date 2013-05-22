@@ -28,6 +28,13 @@ end
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :development do
+  gem "capistrano"
+  gem "capistrano-ext"
+  gem "capistrano_colors"
+  gem 'rvm-capistrano'
+end
+
 group :test,:development do
   # Pretty printed test output
   gem 'rails3-generators'
@@ -38,10 +45,6 @@ group :test,:development do
   gem "watchr"
   gem "factory_girl_rails"
   gem "faker"
-  gem "capistrano"
-  gem "capistrano-ext"
-  gem "capistrano_colors"
-  gem 'rvm-capistrano'
 end
 
 gem 'whenever', :require => false
