@@ -2,7 +2,7 @@ module ApiMatcher
   def it_should_be_areas(areas, matched_area: nil)
     areas.should be_a_kind_of(Array)
     ids = areas.map{ |a| a[:id] }
-    it_should_be_area(areas.select{ |a| a.id == matched_area.id }.first, :area => matched_area) if matched_area
+    it_should_be_area(areas.select{ |a| a[:id] == matched_area.id }.first, :area => matched_area) if matched_area
     areas.each{ |area_hash| it_should_be_area(area_hash, {}) }
   end
 
@@ -19,6 +19,10 @@ module ApiMatcher
     if area_hash.key?(:cities)
       City.disabled.each do |disabled_city|
         area_hash[:cities].select{ |city_hash| city_hash[:id].to_i == disabled_city.id }.size.should == 0
+      end
+
+      area_hash[:cities].each do |city_hash|
+        it_should_be_city(city_hash, :area => area)
       end
     end
   end
@@ -41,8 +45,7 @@ module ApiMatcher
     city_hash.key?(:name).should be_true
     city_hash.key?(:pure_name).should be_true
     city_hash.key?(:type_name).should be_true
-    city_hash.key?(:area).should be_true
-    it_should_be_area(city_hash[:area], :area => area)
+    it_should_be_area(city_hash[:area]) if city_hash.key?(:area)
     if city
       city_hash[:id].to_i.should == city.id
       city_hash[:name].should == city.name 

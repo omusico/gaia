@@ -31,7 +31,7 @@ class City < ActiveRecord::Base
     }
     vars[:name_aliases] = alias_name_list if with.include?(:name_aliases)
     vars[:area] = area.to_api_vars if with.include?(:area)
-    vars[:dists] = dists.map{ |d| d.to_api(:with => [:name_aliases]) } if with.include?(:dists)
+    vars[:dists] = dists.map{ |d| d.to_api_vars(:with => [:name_aliases]) } if with.include?(:dists)
     vars
   end
 
