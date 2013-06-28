@@ -33,6 +33,7 @@ group :development do
   gem "capistrano-ext"
   gem "capistrano_colors"
   gem 'rvm-capistrano'
+  gem 'venus', :git => "git@github.com:marsz/venus.git", :branch => "develop"
 end
 
 group :test,:development do
