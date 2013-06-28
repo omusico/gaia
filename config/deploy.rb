@@ -32,7 +32,7 @@ namespace :deploy do
     run "touch #{deploy_to}/current/tmp/restart.txt"
   end
   task :symlink_shared, :roles => [:app] do
-    config_files = [:database, :setting]
+    config_files = [:database, :setting, :newrelic]
     symlink_hash = {}
     config_files.each do |fname|
       symlink_hash["#{shared_path}/config/#{fname}.yml"] = "#{release_path}/config/#{fname}.yml"
