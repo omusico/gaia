@@ -52,3 +52,5 @@ end
 before "bundle:install", "deploy:symlink_shared"
 # cleanup
 after "deploy", "deploy:cleanup"
+
+require 'puma/capistrano'

@@ -50,3 +50,5 @@ end
 
 # gem 'whenever', :require => false
 gem "settingslogic"
+
+gem 'puma', '~> 2.1.1'
