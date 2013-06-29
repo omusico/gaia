@@ -4,6 +4,5 @@ log/*.log
 tmp/
 .sass-cache/
 config/database.yml
-config/airbrake.yml
-config/config.yml
+config/setting.yml
 config/newrelic.yml
