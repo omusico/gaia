@@ -52,3 +52,4 @@ end
 gem "settingslogic"
 
 gem 'puma', '~> 2.1.1'
+gem 'sentry-raven', '~> 0.4.8'
